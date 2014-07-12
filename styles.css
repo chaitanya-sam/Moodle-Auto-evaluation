@@ -1,0 +1,20 @@
+.que.activity textarea.qtype_activity_response {
+    width: 100%;
+}
+.que.activity textarea.qtype_activity_response.qtype_activity_plain {
+    white-space: pre-wrap;
+    font: inherit;
+}
+.que.activity textarea.qtype_activity_response.qtype_activity_monospaced {
+    white-space: pre;
+    font-family: Andale Mono, Monaco, Courier New, DejaVu Sans Mono, monospace;
+}
+.que.activity .qtype_activity_response {
+    min-height: 3em;
+}
+.que.activity .qtype_activity_response.readonly {
+    background-color: white;
+}
+.que.activity div.qtype_activity_response textarea {
+    width: 100%;
+}

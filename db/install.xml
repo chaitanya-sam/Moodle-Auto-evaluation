@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="question/type/program/db" VERSION="2014070202" COMMENT="XMLDB file for Moodle question/type/program"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="question_program" COMMENT="Extra options for program questions.">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="question"/>
+        <FIELD NAME="question" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="Foreign key linking to the question table." PREVIOUS="id" NEXT="answer"/>
+		<FIELD NAME="answer" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="Foreign key linking to the answer table." PREVIOUS="question" NEXT="classmark"/>
+		<FIELD NAME="lang" TYPE="text" LENGTH="10" NOTNULL="true" SEQUENCE="false" PREVIOUS="answer" NEXT="itemid"/>
+		<FIELD NAME="itemid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" PREVIOUS="lang" NEXT="otherlang"/>
+		<FIELD NAME="otherlang" TYPE="text" LENGTH="10" NOTNULL="false" SEQUENCE="false" PREVIOUS="itemid" NEXT="compilecommand"/>
+		<FIELD NAME="compilecommand" TYPE="text" LENGTH="30" NOTNULL="false" SEQUENCE="false" PREVIOUS="otherlang" NEXT="executioncommand"/>
+		<FIELD NAME="executioncommand" TYPE="text" LENGTH="30" NOTNULL="false" SEQUENCE="false" PREVIOUS="compilecommand"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id" NEXT="question"/>
+        <KEY NAME="question" TYPE="foreign" FIELDS="question" REFTABLE="question" REFFIELDS="id" PREVIOUS="primary" NEXT="itemid"/>
+		<KEY NAME="itemid" TYPE="foreign" FIELDS="itemid" REFTABLE="files" REFFIELDS="itemid" PREVIOUS="question"/>
+      </KEYS>
+    </TABLE>
+  </TABLES>
+</XMLDB>
